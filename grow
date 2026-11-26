@@ -48,6 +48,8 @@ for line in sys.stdin:
         streak += 1
     else:
         streak = 1
+        if prev is not None and (day - prev).days >= 7:
+            total = 0
     prev = day
 
     m = round(1.0 + 0.1 * (streak - 1), 1)
