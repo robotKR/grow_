@@ -7,6 +7,13 @@ from datetime import date, timedelta
 streak = 0
 prev = None
 total = 0
+
+STAGES = [
+    (0, "seed"),
+    (30, "sprout"),
+    (100, "leaf"),
+]
+
 for line in sys.stdin:
     text = line.strip()
     day = date.fromisoformat(text)
@@ -21,4 +28,8 @@ for line in sys.stdin:
         m = 3.0
     gain = round(10 * m)
     total += gain
-    print(day, streak, m, gain, total)
+
+    for a,b in STAGES:
+        if total >= a:
+            stage = b
+    print(day, streak, m, gain, total,stage)
