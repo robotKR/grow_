@@ -1,6 +1,6 @@
 # grow
 
-![test](https://github.com/robotKR/grow/actions/workflows/test.yml/badge.svg)
+![test](https://github.com/robotKR/grow_/actions/workflows/test.yml/badge.svg)
 
 習慣を続けた日付の一覧から、木の成長を計算するコマンドです。
 連続して続けるほど成長の倍率が上がります。
