@@ -75,7 +75,20 @@ $ git log --format=%as | sort -u | ./grow
 | 0〜 | seed |
 | 30〜 | sprout |
 | 100〜 | leaf |
+| 250〜 | sapling|
+| 500〜| tree|
 
+### `-t`オプション
+
+最終的な木をアスキーアートで出力します。最後の行は、成長段階と成長量の合計です。
+```
+$ ./grow -t < log.txt
+
+   ,
+  \|/
+~~~~~~~
+sprout 54
+```
 ## 必要なソフトウェア
 
 - Python
