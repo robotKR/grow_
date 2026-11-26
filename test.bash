@@ -53,6 +53,34 @@ out=$(printf '2026-11-01\n2026-11-02\n2026-11-03\n' | ./grow -t)
 ~~~~~~~
 sprout 33" ] || ng "$LINENO"
 
+out=$(seq -f '2026-11-%02g' 1 1 | ./grow -t)
+[ "${out}" = "
+
+   .
+~~~~~~~
+seed 10" ] || ng "$LINENO"
+
+out=$(seq -f '2026-11-%02g' 1 8 | ./grow -t)
+[ "${out}" = "  \ /
+ --*--
+   |
+~~~~~~~
+leaf 108" ] || ng "$LINENO"
+
+out=$(seq -f '2026-11-%02g' 1 15 | ./grow -t)
+[ "${out}" = " *****
+  ***
+   |
+~~~~~~~
+sapling 255" ] || ng "$LINENO"
+
+out=$(seq -f '2026-11-%02g' 1 24 | ./grow -t)
+[ "${out}" = "*******
+ *****
+   ||
+~~~~~~~
+tree 510" ] || ng "$LINENO"
+
 out=$(echo 2026-11-01 | ./grow -x 2> /dev/null)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
