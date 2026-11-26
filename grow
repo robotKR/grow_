@@ -16,7 +16,13 @@ STAGES = [
 
 for line in sys.stdin:
     text = line.strip()
-    day = date.fromisoformat(text)
+    if text == "":
+        continue
+    try:
+        day = date.fromisoformat(text)
+    except ValueError:
+        print("grow: invalid date: " + text, file=sys.stderr)
+        sys.exit(1)
     if prev is not None and day == prev + timedelta(days=1):
         streak += 1
     else:
