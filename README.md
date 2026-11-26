@@ -9,8 +9,8 @@
 ## インストール
 
 ```
-$ git clone https://github.com/robotKR/grow.git
-$ cd grow
+$ git clone https://github.com/robotKR/grow_.git
+$ cd grow_
 $ chmod +x grow
 ```
 
@@ -63,6 +63,19 @@ Gitのリポジトリで、コミットした日を習慣として木を育て�
 $ git log --format=%as | sort -u | ./grow
 ```
 
+### `-t`オプション
+
+最終的な木をアスキーアートで出力します。最後の行は、成長段階と成長量の合計です。
+
+```
+$ ./grow -t < log.txt
+
+   ,
+  \|/
+~~~~~~~
+sprout 54
+```
+
 ## 成長のしくみ
 
 - 1日あたりの成長量は、10に倍率を掛けた値です。
@@ -75,20 +88,9 @@ $ git log --format=%as | sort -u | ./grow
 | 0〜 | seed |
 | 30〜 | sprout |
 | 100〜 | leaf |
-| 250〜 | sapling|
-| 500〜| tree|
+| 250〜 | sapling |
+| 500〜 | tree |
 
-### `-t`オプション
-
-最終的な木をアスキーアートで出力します。最後の行は、成長段階と成長量の合計です。
-```
-$ ./grow -t < log.txt
-
-   ,
-  \|/
-~~~~~~~
-sprout 54
-```
 ## 必要なソフトウェア
 
 - Python

@@ -1,5 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Kaito Kondo
-# SPDX-License-Identifier: BSD-3-Clausename: test
+# SPDX-License-Identifier: BSD-3-Clause
+name: test
 on: push
 jobs:
   test:

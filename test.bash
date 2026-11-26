@@ -20,7 +20,13 @@ out=$(echo あ | ./grow 2> /dev/null)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
-out=$(echo | ./grow 2> /dev/null) 
+for d in 20261101 2026-W44-1 2026-11-1 ２０２６-11-01; do
+	out=$(echo "$d" | ./grow 2> /dev/null)
+	[ "$?" = 1 ]      || ng "$LINENO"
+	[ "${out}" = "" ] || ng "$LINENO"
+done
+
+out=$(echo | ./grow 2> /dev/null)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
 
