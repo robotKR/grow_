@@ -8,11 +8,29 @@ streak = 0
 prev = None
 total = 0
 
+tree_mode = False
+for arg in sys.argv[1:]:
+    if arg == "-t":
+        tree_mode = True
+    else:
+        print("grow: unknown option: " + arg, file=sys.stderr)
+        sys.exit(1)
+
 STAGES = [
     (0, "seed"),
     (30, "sprout"),
     (100, "leaf"),
+    (250, "sapling"),
+    (500, "tree"),
 ]
+
+TREES = {
+    "seed": ["", "", "   .", "~~~~~~~"],
+    "sprout": ["", "   ,", "  \\|/", "~~~~~~~"],
+    "leaf": ["  \\ /", " --*--", "   |", "~~~~~~~"],
+    "sapling": [" *****", "  ***", "   |", "~~~~~~~"],
+    "tree": ["*******", " *****", "   ||", "~~~~~~~"],
+}
 
 for line in sys.stdin:
     text = line.strip()
@@ -38,8 +56,14 @@ for line in sys.stdin:
     for a,b in STAGES:
         if total >= a:
             stage = b
-    print(day, streak, m, gain, total,stage)
+    if not tree_mode:
+        print(day, streak, m, gain, total, stage)
 
 if prev is None:
     print("grow: no dates in input", file=sys.stderr)
     sys.exit(1)
+
+if tree_mode:
+    for row in TREES[stage]:
+        print(row)
+    print(stage, total)
