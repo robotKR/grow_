@@ -6,6 +6,7 @@ from datetime import date, timedelta
 
 streak = 0
 prev = None
+total = 0
 for line in sys.stdin:
     text = line.strip()
     day = date.fromisoformat(text)
@@ -13,5 +14,9 @@ for line in sys.stdin:
         streak += 1
     else:
         streak = 1
-    print(day, streak)
     prev = day
+    
+    m = round(1.0 + 0.1 * (streak - 1), 1)
+    gain = round(10 * m)
+    total += gain
+    print(day, streak, m, gain, total)
