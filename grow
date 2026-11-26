@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Kaito Kondo
+# SPDX-License-Identifier: BSD-3-Clause
+import sys
+
+for line in sys.stdin:
+    text = line.strip()
+    print(text)
