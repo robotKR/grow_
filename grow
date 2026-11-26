@@ -2,7 +2,16 @@
 # SPDX-FileCopyrightText: 2026 Kaito Kondo
 # SPDX-License-Identifier: BSD-3-Clause
 import sys
+from datetime import date, timedelta
 
+streak = 0
+prev = None
 for line in sys.stdin:
     text = line.strip()
-    print(text)
+    day = date.fromisoformat(text)
+    if prev is not None and day == prev + timedelta(days=1):
+        streak += 1
+    else:
+        streak = 1
+    print(day, streak)
+    prev = day
