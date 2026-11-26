@@ -16,6 +16,12 @@ out=$(printf '2026-11-01\n2026-11-02\n2026-11-03\n' | ./grow)
 2026-11-02 2 1.1 11 21 seed
 2026-11-03 3 1.2 12 33 sprout" ] || ng "$LINENO"
 
+out=$(printf '2026-11-01\n2026-11-02\n2026-11-04\n' | ./grow)
+[ "$?" = 0 ] || ng "$LINENO"
+[ "${out}" = "2026-11-01 1 1.0 10 10 seed
+2026-11-02 2 1.1 11 21 seed
+2026-11-04 1 1.0 10 31 sprout" ] || ng "$LINENO"
+
 out=$(echo あ | ./grow 2> /dev/null)
 [ "$?" = 1 ]      || ng "$LINENO"
 [ "${out}" = "" ] || ng "$LINENO"
